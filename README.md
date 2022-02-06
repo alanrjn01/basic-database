@@ -4,4 +4,5 @@ Aplicación hecha con React
 https://alanrjn01.github.io/basic-database/  
 # Versiones:  
 v1: carga a la base de datos  
-v2: lista de la base de datos cargada y botón de refrescar para actualizar la lista  
+v2: lista sincronizada con la base de datos cargada y botón para eliminar documentos de la misma  
+v3: botón para editar documentos desde la lista y actualización en tiempo real  en la base de datos
