@@ -27,7 +27,7 @@ function App() {
         arrayNuevo.push({id:document.id,nombre:document.data().nombre,celular:document.data().celular})
         //agrego al array nuevo en cada posición: un objeto con los campos correspondientes
       })
-      console.log(arrayNuevo)
+
       arrayNuevo.sort((a,b)=>{
         //ordeno alfabeticamente el array
         const nombreA= a.nombre.toLowerCase()
@@ -129,23 +129,27 @@ function App() {
     <div className="container">
       <div className="row"></div>
       <div className="col">
-        <h2>Formulario de usuarios</h2>
+        <h2 className="mt-2">Ingreso de usuarios</h2>
         <form onSubmit={setUsuarios} className="form-group">
+        <span>😀Nombre:</span>
           <input
+          style={{width:'fit-content'}}
           value={nombre}
             onChange={(e) => {
               setNombre(e.target.value);
             }}
-            className="form-control"
+            className="form-control mb-3"
             type="text"
             placeholder="introduce el nombre"
           ></input>
+          <span>📱Celular:</span>
           <input
+          style={{width:'fit-content'}}
           value={celular}
             onChange={(e) => {
               setCelular(e.target.value);
             }}
-            className="form-control mt-3"
+            className="form-control"
             type="number"
             placeholder="introduce el número de celular"
           ></input>
@@ -170,14 +174,14 @@ function App() {
         }
       </div>
       <div className="col">
-        <h2>Lista de tu Agenda</h2>
+        <h2>Lista de la Agenda 📕</h2>
         <ul className="list-group">
         {
           userAgenda.length != 0 ?
           (
             <div>
               {userAgenda.map(item => (
-                <li className="list-group-item" key= {item.id}> 🤨{item.nombre} | 📱{item.celular} <img src="https://www.svgrepo.com/show/162728/delete.svg" onClick={(id)=>{borrarUsuario(item.id)}} style={{width:'24px',height:'24px', cursor: 'pointer'}}></img> </li>
+                <li style={{width:'350px'}} className="list-group-item" key= {item.id}> 🤨{item.nombre} | 📱{item.celular} | <img src="https://www.svgrepo.com/show/184197/user-delete.svg" onClick={(id)=>{borrarUsuario(item.id)}} style={{width:'24px',height:'24px', cursor: 'pointer'}}></img> </li>
                 
               ))}
             </div>
@@ -190,6 +194,7 @@ function App() {
         }
         </ul>
         <button onClick={refrescarAgenda} type="button" className="btn btn-info btn-block mt-3" style={{color:'white'}}>Refrescar</button>
+        <p>Al momento de registrar o eliminar un usuario en la base de datos, presionar el botón "Refrescar"</p>
       </div>
     </div>
   );
